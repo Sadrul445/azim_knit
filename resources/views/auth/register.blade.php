@@ -1,7 +1,18 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
+        <div>
+            <x-input-label for="usertype" :value="__('User Type')" />
+            <select id="usertype" class="block mt-1 w-full" name="usertype" required>
+                <option value="admin">Admin</option>
+                <option value="hr">HR</option>
+                <option value="compliance">Compliance</option>
+                <option value="merchandiser">Merchandiser</option>
+                <option value="operation">Operation</option>
+                <option value="account">Account</option>
+                <option value="it">IT</option>
+            </select>
+        </div>
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />

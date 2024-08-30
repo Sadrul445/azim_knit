@@ -31,17 +31,23 @@ class AuthenticatedSessionController extends Controller
         // $user = $request->user();
         $user = auth()->user();
 
-        if($user->usertype === 'admin')
-        {
-            return redirect('admin/dashboard');
-        }elseif($user->usertype === 'hr'){
-            return redirect('hr/dashboard');
-        }elseif($user->usertype === 'compliance'){
-            return redirect('compliance/dashboard');
-        }elseif($user->usertype === 'merchandiser'){
-            return redirect('merchant/dashboard');
+        if ($user->usertype === 'admin') {
+            return redirect()->route('admin.dashboard');
         }
-        return redirect()->intended(route('dashboard'));
+    
+        // Redirect other users to their specific dashboards
+        switch ($user->usertype) {
+            case 'hr': //usertypes
+                return redirect()->route('hr.dashboard');
+            case 'compliance': 
+                return redirect()->route('compliance.dashboard');
+            case 'merchandiser': 
+                return redirect()->route('merchant.dashboard');
+            case 'operation': 
+                return redirect()->route('operation.dashboard');
+            default:
+                return redirect()->route('/');
+        }
     }
 
     /**

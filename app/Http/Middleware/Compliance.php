@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class Admin
+class Compliance
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->usertype === 'admin') {
+        if (Auth::check() && (Auth::user()->usertype === 'compliance' || Auth::user()->usertype === 'admin')) {
             return $next($request);
         }
-        return redirect('login');
+        return redirect('/');
     }
 }
