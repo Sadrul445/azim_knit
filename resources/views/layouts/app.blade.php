@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Azim Group - Knit Division') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -14,13 +14,18 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <style>
+        .azimbg {
+            background: linear-gradient(to top, #ffffff, #0083c1);
+        }
+    </style>
+    <body class="azimbg font-sans antialiased">
+        <div class="min-h-screen azimbg">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             @isset($header)
-                <header class="bg-white shadow">
+                <header class="shadow" style="background: #81d1f7;">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
@@ -29,8 +34,9 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                {{ $slot }} 
             </main>
         </div>
     </body>
+
 </html>
