@@ -23,6 +23,29 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+
+    // Admin can access all HR routes
+    Route::get('hrm/dashboard', [HrController::class, 'index'])->name('hr.dashboard');
+    // Route::get('hr/reports', [HrController::class, 'reports'])->name('hr.reports');
+    // Route::get('hr/employees', [HrController::class, 'employees'])->name('hr.employees');
+
+    // Admin can access all Compliance routes
+    Route::get('compliance/dashboard', [ComplianceController::class, 'index'])->name('compliance.dashboard');
+    // Route::get('compliance/audits', [ComplianceController::class, 'audits'])->name('compliance.audits');
+    // Route::get('compliance/reports', [ComplianceController::class, 'reports'])->name('compliance.reports');
+
+    // Admin can access all Merchant routes
+    Route::get('merchandiser/dashboard', [MerchenController::class, 'index'])->name('merchant.dashboard');
+    // Route::get('merchant/orders', [MerchenController::class, 'orders'])->name('merchant.orders');
+    // Route::get('merchant/reports', [MerchenController::class, 'reports'])->name('merchant.reports');
+
+    // Admin can access all Operation routes
+    Route::get('operation/dashboard', [OperationController::class, 'index'])->name('operation.dashboard');
+    // Route::get('operation/tasks', [OperationController::class, 'tasks'])->name('operation.tasks');
+    // Route::get('operation/reports', [OperationController::class, 'reports'])->name('operation.reports');
+});
 
 // Admin routes
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -31,7 +54,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 // HR routes
 Route::middleware(['auth', 'hr'])->group(function () {
-    Route::get('hr/dashboard', [HrController::class, 'index'])->name('hr.dashboard');
+    Route::get('hrm/dashboard', [HrController::class, 'index'])->name('hr.dashboard');
 });
 
 // Compliance routes

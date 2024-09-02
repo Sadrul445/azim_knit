@@ -37,7 +37,7 @@ class AuthenticatedSessionController extends Controller
     
         // Redirect other users to their specific dashboards
         switch ($user->usertype) {
-            case 'hr': //usertypes
+            case 'hrm': //usertypes
                 return redirect()->route('hr.dashboard');
             case 'compliance': 
                 return redirect()->route('compliance.dashboard');

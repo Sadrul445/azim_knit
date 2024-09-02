@@ -11,10 +11,10 @@ class Hr
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && (Auth::user()->usertype === 'hr' || Auth::user()->usertype === 'admin')) {
+        if (Auth::check() && (Auth::user()->usertype === 'hrm' || Auth::user()->usertype === 'admin')) {
             return $next($request);
         }
 
-        return redirect('/');
+        return redirect('login');
     }
 }

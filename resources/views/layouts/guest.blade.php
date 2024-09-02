@@ -18,6 +18,17 @@
         .azimbg {
             background: linear-gradient(to top, #ffffff, #0083c1);
         }
+        .knit_h1{
+            font-size: 25px;
+            font-weight:100;
+            color:#ffffff;
+            font-family:'Times New Roman', Times, serif;
+            /* margin-left: -2rem; */
+            bottom: 1rem;
+            left: 3.6rem;
+            position: relative;
+
+        }
     </style>
     <body class="azimbg font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6">
@@ -26,7 +37,7 @@
                     src="{{ asset('assets/img/logo/AG-LOGO.png') }}" alt=""></a>
                 </div>
                 <div class="my-4">
-                    <h1 style="font-size: 35px;font-weight:100;color:#ffffff;font-family:'Times New Roman', Times, serif">KNIT DIVISION</h1>
+                    <h1 class="knit_h1">KNIT DIVISION</h1>
                 </div>
                 <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}

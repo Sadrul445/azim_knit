@@ -15,6 +15,6 @@ class Operation
             return $next($request);
         }
 
-        return redirect('/');
+        return redirect('login');
     }
 }

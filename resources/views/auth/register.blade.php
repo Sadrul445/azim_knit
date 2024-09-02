@@ -4,8 +4,8 @@
         <div>
             <x-input-label for="usertype" :value="__('User Type')" />
             <select id="usertype" class="block mt-1 w-full" name="usertype" required>
-                <option value="admin">Admin</option>
-                <option value="hr">HR</option>
+                {{-- <option value="admin">Admin</option> --}}
+                <option value="hrm">HRM</option>
                 <option value="compliance">Compliance</option>
                 <option value="merchandiser">Merchandiser</option>
                 <option value="operation">Operation</option>

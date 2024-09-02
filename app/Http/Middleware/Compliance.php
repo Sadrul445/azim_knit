@@ -14,6 +14,6 @@ class Compliance
         if (Auth::check() && (Auth::user()->usertype === 'compliance' || Auth::user()->usertype === 'admin')) {
             return $next($request);
         }
-        return redirect('/');
+        return redirect('login');
     }
 }

@@ -30,12 +30,14 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
+            'usertype' => ['required','string'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
+            'usertype' => $request->usertype,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -45,6 +47,27 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        switch ($user->usertype) {
+            case 'admin':
+                $route = 'admin.dashboard';
+                break;
+            case 'hrm':
+                $route = 'hr.dashboard';
+                break;
+            case 'compliance':
+                $route = 'compliance.dashboard';
+                break;
+            case 'merchandiser':
+                $route = 'merchant.dashboard';
+                break;
+            case 'operation':
+                $route = 'operation.dashboard';
+                break;
+            default:
+                $route = '/'; // Default route if usertype does not match
+                break;
+        }
+    
+        return redirect()->route($route);
     }
 }

@@ -15,7 +15,7 @@
                     <x-nav-link href="{{ url('/' . auth()->user()->usertype . '/dashboard') }}" :active="request()->is(auth()->user()->usertype . '/dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link href="/" style="color:white">
+                    <x-nav-link href="/ `" style="color:white">
                         {{ __('Documents') }}
                     </x-nav-link>
                 </div>
